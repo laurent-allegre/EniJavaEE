@@ -11,8 +11,8 @@
 
 <%   User u = (User) session.getAttribute( "utilisateur" ) ;	%>
 	
-	<h1>Information Utilisateur</h1> 	
-	
+	<h1>Information Utilisateur </h1> 	
+	<h2>Vous êtes connecté avec les login et mot de passe suivant :</h2>
 	<ul>
 		<li>Login : <%=u.getLogin() %>
 		<li>Mot de passe : <%=u.getPwd() %>
