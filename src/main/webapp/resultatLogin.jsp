@@ -14,9 +14,10 @@
 	<h1>Information Utilisateur </h1> 	
 	<h2>Vous êtes connecté avec les login et mot de passe suivant :</h2>
 	<ul>
-		<li>Login : <%=u.getLogin() %>
-		<li>Mot de passe : <%=u.getPwd() %>
+		<li><strong>Votre Login est :</strong> <%=u.getLogin() %>
+		<li><strong>Votre Mot de passe est :</strong> <%=u.getPwd() %>
 	</ul>
+	<h4>Youpiiiiiiiiiii ca marche j'adore java non c'est pas vrai !!!!!!!!!!!</h4>
 
 </body>
 </html>
