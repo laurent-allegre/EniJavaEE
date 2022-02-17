@@ -1,33 +1,33 @@
 package fr.AAEniJavaEE.user.bo;
 
 public class User {
-	private String login;
-	private String pwd ;
+	private String pseudo;
+	private String motDePasse ;
 
 	public User() {
 		super();
 	}
 
-	public User(String login, String pwd) {
+	public User(String pseudo, String motDePasse) {
 		super();
-		this.login = login;
-		this.pwd = pwd;
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getPseudo() {
+		return pseudo;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPwd(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
 
 }
