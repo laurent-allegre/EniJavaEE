@@ -1,6 +1,7 @@
 package fr.AAEniJavaEE.controlSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,34 +29,44 @@ public class zonesecure extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		traitement(request,response);
-	}
+    }	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		traitement(request,response);
+		response.setContentType("text/html"); 
+    	PrintWriter out = response.getWriter();
+ 
+    	//get parameters from request object.
+    	String userName = request.getParameter("pseudo").trim();
+    	String password = request.getParameter("motDePasse").trim();
+ 
+    	//check for null and empty values.
+    	if(userName == null || userName.equals("") || 
+    			password == null || password.equals("")){
+    		out.print("Please enter both username " +
+    				"and password. <br/><br/>");
+    		RequestDispatcher requestDispatcher = 
+    			request.getRequestDispatcher("/login.html");
+    		requestDispatcher.include(request, response);
+    	}//Check for valid username and password.
+    	else if(userName.equals("admin") && password.equals("123")){
+    		HttpSession session=request.getSession();  
+                session.setAttribute("userName",userName);  
+                session.setAttribute("password",password);
+ //   		out.println("Logged in successfully.<br/>"); 
+ //   		out.println("Click on the below link to see " +
+ //   			"the values of Username and Password.<br/>");
+ //   		out.println("<a href='DisplaySessionValueServlet'>" +
+ //   				"Click here</a>");
+ //   	    out.close();
+                response.sendRedirect("DisplaySessionValueServlet");  
+                
+    	}else{
+    		out.print("Wrong username or password. <br/><br/>");
+    		RequestDispatcher requestDispatcher =request.getRequestDispatcher("/login.html");
+    		requestDispatcher.include(request, response);
+    	}
 	}
 	
-	protected void traitement(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	// Etape 1 : Récupération des paramètres de la requête
 	
-	String pseudo = request.getParameter("pseudo");
-	String motDePasse = request.getParameter("motDePasse");
-	
-	// Etape 2 : Soumettre les paramètres de la requête à la couche service et récupérer résultat
-	
-	User user = new User(pseudo, motDePasse);	
-	HttpSession maSession = request.getSession();		
-	maSession.setAttribute("utilisateur", user);
-	
-	// UserService userService = new UserService();
-	// boolean userValid = userService.verifUser (user) ;
-	// maSession.setAttribute("validUser", userValid);
-	
-	// Etape 3 : Réponse à l'utilisateur
-	RequestDispatcher   dispatcher = request.getRequestDispatcher("resultatLogin.jsp");
-	dispatcher.forward(request, response);
-	
-	}
 
 }

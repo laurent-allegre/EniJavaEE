@@ -21,13 +21,17 @@
 <title>Utilisateur Connecté</title>
 </head>
 <body>
-<% User u = (User) session.getAttribute( "utilisateur" ) ;	%>
-		 <%=u.getPseudo() %>
-		 <%=u.getMotDePasse() %>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	
+	
+	<%String userName =(String)session.getAttribute("userName");  %>
+    
+<!--      ------------------------------------------------------------------------------------------------ -->
+
 	<header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand">ENI-Enchères</a>
+          <a href="connexion.html" class="navbar-brand">ENI-Enchères</a>
           <div class="d-flex">
             <a class="p-2" href="">Enchères</a>
             <a class="p-2" href="">Vendre un article</a>
@@ -40,7 +44,8 @@
      <!--content start-->
 	
     <h2 class="text-center">Liste des Enchères</h2>
-    <h3 class="text-center">Bonjour <%=u.getPseudo() %></h3>
+    <h3 class="text-center">Bonjour <%=userName %> </h3>
+    
     <div class="container">
       <div class="row">
         <div class="col-md-5">
