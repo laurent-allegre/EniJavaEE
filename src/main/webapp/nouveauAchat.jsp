@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%String userName =(String)session.getAttribute("userName");  %>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -47,6 +48,7 @@
     <!--content start-->
 
     <h1 class="text-center">Nouveau achat</h1>
+    <h3 class="text-center">Bonjour <%=userName %> </h3>
     <div class="container mt-3">
       <form action="ServletValidantAjoutArticle" method="post">  
         <div class="row">
